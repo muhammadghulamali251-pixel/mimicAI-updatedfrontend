@@ -3,7 +3,7 @@
 // GET
 const getMyBot = async () => {
     try {
-        const res = await fetch('http://localhost:3000/api/bot', {
+        const res = await fetch('https://mimicai-backend.onrender.com/api/bot', {
             method: 'GET',
             credentials: 'include'
         })
@@ -23,7 +23,7 @@ const getMyBot = async () => {
 
 const createBot = async (createBotData) => {
     try {
-        const res = await fetch('http://localhost:3000/api/bot', {
+        const res = await fetch('https://mimicai-backend.onrender.com/api/bot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',

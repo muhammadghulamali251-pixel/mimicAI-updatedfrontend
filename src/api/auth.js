@@ -3,7 +3,7 @@
 // REGISTER
 const registerUser = async (registerUserData) => {
     try {
-        const res = await fetch('http://localhost:3000/api/auth/register', {
+        const res = await fetch('https://mimicai-backend.onrender.com/api/auth/register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
@@ -26,7 +26,7 @@ const registerUser = async (registerUserData) => {
 // LOGIN
 const loginUser = async (loginUserData) => {
     try {
-        const res = await fetch('http://localhost:3000/api/auth/login', {
+        const res = await fetch('https://mimicai-backend.onrender.com/api/auth/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             credentials: 'include',
@@ -50,7 +50,7 @@ const loginUser = async (loginUserData) => {
 // LOGOUT
 const logoutUser = async () => {
     try {
-        const res = await fetch('http://localhost:3000/api/auth/logout', {
+        const res = await fetch('https://mimicai-backend.onrender.com/api/auth/logout', {
             method: 'POST',
             credentials: 'include'
         })

@@ -4,7 +4,7 @@
 
 const sendPrompt = async (prompt, history, slug) => {
     try{
-        const res = await fetch (`http://localhost:3000/api/chat/${slug}`, {
+        const res = await fetch (`https://mimicai-backend.onrender.com/api/chat/${slug}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({prompt, history})
