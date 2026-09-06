@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch('http://localhost:3000/api/bot', {
+                const res = await fetch('https://mimicai-backend.onrender.com/api/bot', {
                     credentials: 'include'
                 })
                 setAuthorized(res.ok || res.status === 404)
