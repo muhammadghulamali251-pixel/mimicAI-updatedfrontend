@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
         const checkAuth = async () => {
             try {
                 const res = await fetch('https://mimicai-backend.onrender.com/api/bot', {
-                    credentials: 'include'
+                    headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
                 })
                 setAuthorized(res.ok || res.status === 404)
                 // 200 = has a bot, 404 = logged in but no bot yet, both mean "authenticated"

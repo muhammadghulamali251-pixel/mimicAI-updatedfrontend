@@ -5,7 +5,7 @@ const getMyBot = async () => {
     try {
         const res = await fetch('https://mimicai-backend.onrender.com/api/bot', {
             method: 'GET',
-            credentials: 'include'
+            headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
         })
 
         const result = await res.json()
@@ -25,8 +25,10 @@ const createBot = async (createBotData) => {
     try {
         const res = await fetch('https://mimicai-backend.onrender.com/api/bot', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify(createBotData)
         })
 

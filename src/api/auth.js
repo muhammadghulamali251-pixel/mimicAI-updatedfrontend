@@ -6,7 +6,6 @@ const registerUser = async (registerUserData) => {
         const res = await fetch('https://mimicai-backend.onrender.com/api/auth/register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            credentials: 'include',
             body: JSON.stringify(registerUserData)
         })
 
@@ -16,7 +15,7 @@ const registerUser = async (registerUserData) => {
             return {success: false, message: result.message}
         }
 
-        return {success:true, message: result.message}
+        return {success:true, message: result.message , token: result.token}
 
     } catch (err) {
         return {success:false, message: "Network failed."}
@@ -29,7 +28,6 @@ const loginUser = async (loginUserData) => {
         const res = await fetch('https://mimicai-backend.onrender.com/api/auth/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            credentials: 'include',
             body: JSON.stringify(loginUserData)
         })
 
@@ -40,7 +38,7 @@ const loginUser = async (loginUserData) => {
             return {success: false, message: result.message}
         }
 
-        return {success: true, message: result.message , user: result.user}
+        return {success: true, message: result.message , user: result.user,  token: result.token}
 
     } catch (err) {
         return {success: false, message: "Network failed."}
@@ -51,8 +49,7 @@ const loginUser = async (loginUserData) => {
 const logoutUser = async () => {
     try {
         const res = await fetch('https://mimicai-backend.onrender.com/api/auth/logout', {
-            method: 'POST',
-            credentials: 'include'
+            method: 'POST'
         })
 
         const result = await res.json()

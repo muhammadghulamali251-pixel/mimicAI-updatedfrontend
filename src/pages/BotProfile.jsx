@@ -95,6 +95,7 @@ const BotProfile = () => {
     const handleLogout = async () => {
         await logoutUser()
         localStorage.removeItem('user')
+        localStorage.removeItem('token')
         navigate('/auth')
     }
 

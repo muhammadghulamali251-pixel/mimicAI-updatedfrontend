@@ -42,6 +42,7 @@ const Register = () => {
             }, 3000);
             return;
         }
+        localStorage.setItem('token', result.token)
         setRegisterSuccessMessage(result.message)
         setTimeout(() => {
             setRegisterSuccessMessage("")
@@ -64,6 +65,7 @@ const Register = () => {
             }, 3000);
             return;
         }
+        localStorage.setItem('token', result.token)
         localStorage.setItem('user', JSON.stringify(result.user))
         setLoginSuccessMessage(result.message)
         setTimeout(() => {

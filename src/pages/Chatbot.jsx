@@ -10,6 +10,8 @@ import { sendPrompt } from '../api/chatbot';
 const Chatbot = () => {
 
     const { slug } = useParams()
+    const user = JSON.parse(localStorage.getItem("user"))
+    const userFirstName = user?.name ? user.name.split(" ")[0].charAt(0).toUpperCase() + user.name.split(" ")[0].slice(1) : ""
 
     // STATES
     const [prompt, setPrompt] = useState("");
@@ -68,7 +70,7 @@ const Chatbot = () => {
     }, [chat])
 
     return (
-        <main className='h-screen w-screen flex items-center justify-center bg-[#0D1321]'>
+        <main className='h-dvh w-screen flex items-center justify-center bg-[#0D1321]'>
 
             {/* CHATBOT CARD */}
             <div className="chatBot flex flex-col justify-between h-full w-full md:w-200 bg-white/6">
@@ -81,7 +83,7 @@ const Chatbot = () => {
                         </span>
                     </div>
                     <div className="assistant">
-                        <p className='text-[#ECEEF6] font-bold'>Assistant</p>
+                        <p className='text-[#ECEEF6] font-bold'>{user ? `${userFirstName}'s AI` : "AI Assistant"}</p>
                         <div className="onlineStatus flex items-center gap-1">
                             <span className='block w-2 h-2 rounded-full bg-green-500'></span>
                             <small className='text-[#8B93AB]'>Online</small>
