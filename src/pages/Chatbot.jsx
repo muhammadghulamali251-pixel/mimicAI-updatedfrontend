@@ -5,13 +5,12 @@ import { useParams } from 'react-router-dom'
 
 // PAGES
 import { sendPrompt } from '../api/chatbot';
-
+import { getBotInfo } from '../api/bot';
 
 const Chatbot = () => {
 
     const { slug } = useParams()
-    const user = JSON.parse(localStorage.getItem("user"))
-    const userFirstName = user?.name ? user.name.split(" ")[0].charAt(0).toUpperCase() + user.name.split(" ")[0].slice(1) : ""
+    const [ownerName, setOwnerName] = useState("")
 
     // STATES
     const [prompt, setPrompt] = useState("");
@@ -69,6 +68,19 @@ const Chatbot = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" })
     }, [chat])
 
+    // OWNER NAME
+    useEffect(() => {
+        const fetchBotInfo = async () => {
+            const result = await getBotInfo(slug)
+            if (result.success) {
+                const first = result.ownerName.split(" ")[0]
+                const capitalized = first.charAt(0).toUpperCase() + first.slice(1)
+                setOwnerName(capitalized)
+            }
+        }
+        fetchBotInfo()
+    }, [slug])
+
     return (
         <main className='h-dvh w-screen flex items-center justify-center bg-[#0D1321]'>
 
@@ -83,7 +95,7 @@ const Chatbot = () => {
                         </span>
                     </div>
                     <div className="assistant">
-                        <p className='text-[#ECEEF6] font-bold'>{user ? `${userFirstName}'s AI` : "AI Assistant"}</p>
+                    <p className='text-[#ECEEF6] font-bold'>{ownerName ? `${ownerName}'s AI` : "AI Assistant"}</p>
                         <div className="onlineStatus flex items-center gap-1">
                             <span className='block w-2 h-2 rounded-full bg-green-500'></span>
                             <small className='text-[#8B93AB]'>Online</small>
@@ -161,10 +173,10 @@ const Chatbot = () => {
 
                     <div className='text-center pt-2'>
                         <a href="https://mimic-ai-neon.vercel.app" target="_blank" rel="noopener noreferrer" className='text-xs text-[#8B93AB] hover:text-[#A9B8FF] transition-colors'>Powered by MimicAI — build your own bot</a>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </main >
     )
 }

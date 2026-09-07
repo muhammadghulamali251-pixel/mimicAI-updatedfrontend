@@ -45,4 +45,23 @@ const createBot = async (createBotData) => {
     }
 }
 
-export { getMyBot, createBot }
+const getBotInfo = async (slug) => {
+    try {
+        const res = await fetch(`https://mimicai-backend.onrender.com/api/bot/info/${slug}`, {
+            method: 'GET'
+        })
+
+        const result = await res.json()
+
+        if (!res.ok) {
+            return {success: false, message: result.message}
+        }
+
+        return {success: true, botName: result.botName, ownerName: result.ownerName}
+
+    } catch (err) {
+        return {success: false, message: "Network failed."}
+    }
+}
+
+export { getMyBot, createBot, getBotInfo }
