@@ -140,7 +140,7 @@ const Chatbot = () => {
                 </div>
 
                 {/* PROMPT */}
-                <div className="prompt border border-white/[0.07] py-4 px-2 md:py-8 md:px-6 bg-[#0D1321]/65 text-[#8B93AB]">
+                <div className="prompt border border-white/[0.07] py-2 px-2 md:py-2 md:px-6 bg-[#0D1321]/65 text-[#8B93AB]">
                     <div className='flex w-full relative'>
                         <input
                             value={prompt}
@@ -148,7 +148,7 @@ const Chatbot = () => {
                             onKeyDown={(e) => {
                                 if (e.key === "Enter") handleSend()
                             }}
-                            className='text-white border border-white/10 w-full py-4 px-4 rounded-xl' type="text" placeholder='Type a message...' />
+                            className='text-white border border-white/10 w-full py-3 md:py-4 px-3 md:px-4 rounded-xl placeholder:text-sm' type="text" placeholder='Type a message...' />
                         <button
                             onClick={() => {
                                 handleSend()
@@ -159,9 +159,13 @@ const Chatbot = () => {
                         </button>
                     </div>
 
+                    <div className='text-center pt-2'>
+                        <a href="https://mimic-ai-neon.vercel.app" target="_blank" rel="noopener noreferrer" className='text-xs text-[#8B93AB] hover:text-[#A9B8FF] transition-colors'>Powered by MimicAI — build your own bot</a>
                 </div>
             </div>
-        </main>
+
+        </div>
+        </main >
     )
 }
 

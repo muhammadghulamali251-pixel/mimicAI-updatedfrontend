@@ -11,14 +11,14 @@ const Home = () => {
 
 Tone: confident, concise, no filler. Never invent details not listed above. If asked something outside this, say you don't have that detail and offer to connect them with [Your Name] directly.`
 
-const freelancerPrompt = `You are the intake assistant for [Your Name / Business], a freelance [your service]. Greet visitors, explain your process, and answer common questions.
+    const freelancerPrompt = `You are the intake assistant for [Your Name / Business], a freelance [your service]. Greet visitors, explain your process, and answer common questions.
 
 
 [Write your details here: services offered, process/timeline, pricing range, availability]
 
 Tone: friendly and professional. Always end by asking for their email and a short project summary so [Your Name] can follow up.`
 
-const storefrontPrompt = `You are the customer support assistant for [Business Name], a [what you sell/do].
+    const storefrontPrompt = `You are the customer support assistant for [Business Name], a [what you sell/do].
 
 [Write your details here: products/services, shipping and returns policy, key info customers ask about]
 
@@ -36,7 +36,13 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
     const handleCopy = (text) => {
         navigator.clipboard.writeText(text)
     }
-    
+
+    // SERVER WAKE UP
+
+    useEffect(() => {
+        fetch('https://mimicai-backend.onrender.com/api/bot').catch(() => {})
+    }, [])
+
 
     return (
         <main className="min-h-screen  w-full inset-0 -z-10 bg-[#0D1321] bg-[radial-gradient(900px_560px_at_12%_0%,rgba(67,97,238,0.30),transparent_60%),radial-gradient(800px_640px_at_90%_18%,rgba(114,9,183,0.26),transparent_55%)]">
@@ -61,9 +67,9 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                     <p className='text-center text-[#9AA2BD]'>Write how it should think and talk, get a link back. You can spin up a chatbot for yourself, your services, or your brand in minutes.</p>
                     <div className="buttons flex items-center gap-4">
                         <Link to='/auth' className='py-3 px-6 font-semibold text-white rounded-md cursor-pointer bg-linear-to-br from-[#4361EE] to-[#7209B7] hover:opacity-90 hover:-translate-y-0.5 transition-all duration-150'>Get Started</Link>
-                        <button 
-                        onClick={() => examplesRef.current.scrollIntoView({behavior: "smooth"})}
-                        className='py-3 px-6 text-white  bg-gray-800 border border-gray-600 rounded-md cursor-pointer font-semibold'>See Examples</button>
+                        <button
+                            onClick={() => examplesRef.current.scrollIntoView({ behavior: "smooth" })}
+                            className='py-3 px-6 text-white  bg-gray-800 border border-gray-600 rounded-md cursor-pointer font-semibold'>See Examples</button>
                     </div>
                 </div>
 
@@ -125,16 +131,16 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                             <small className='text-[#9AA2BD]'>Answers questions about your background, skills, and projects the way you'd want a recruiter to hear them.</small>
                             <div className='flex flex-col gap-4 bg-[#0D1321] rounded-xl p-4'>
                                 <pre className='text-[#9AA2BD] text-sm font-mono whitespace-pre-wrap'>{`${careerPrompt}`}</pre>
-                                <button 
-                                onClick={() => {
-                                    handleCopy(careerPrompt)
-                                    setCopyCareerPrompt(true)
-                                    setTimeout(() => {
-                                        setCopyCareerPrompt(false)
-                                    }, 2000);
-                                }}
-                                className={`self-end flex items-center gap-2 py-2 px-4 rounded-md ${!copyCareerPrompt ?"bg-gray-700 border border-gray-600 text-white": "bg-green-500/15 border border-green-500/40 text-green-400"} text-sm font-semibold cursor-pointer`}>
-                                    {!copyCareerPrompt ? <Copy size={16} /> : <Check size={16}/>}
+                                <button
+                                    onClick={() => {
+                                        handleCopy(careerPrompt)
+                                        setCopyCareerPrompt(true)
+                                        setTimeout(() => {
+                                            setCopyCareerPrompt(false)
+                                        }, 2000);
+                                    }}
+                                    className={`self-end flex items-center gap-2 py-2 px-4 rounded-md ${!copyCareerPrompt ? "bg-gray-700 border border-gray-600 text-white" : "bg-green-500/15 border border-green-500/40 text-green-400"} text-sm font-semibold cursor-pointer`}>
+                                    {!copyCareerPrompt ? <Copy size={16} /> : <Check size={16} />}
                                     {!copyCareerPrompt ? "Copy" : "Copied"}
                                 </button>
                             </div>
@@ -146,16 +152,16 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                             <small className='text-[#9AA2BD]'>Screens new project inquiries, explains your process and rates, and collects the details you need before a call.</small>
                             <div className='flex flex-col gap-4 bg-[#0D1321] rounded-xl p-4'>
                                 <pre className='text-[#9AA2BD] text-sm font-mono whitespace-pre-wrap'>{`${freelancerPrompt}`}</pre>
-                                <button 
-                                onClick={() => {
-                                    handleCopy(freelancerPrompt)
-                                    setCopyFreelancerPrompt(true)
-                                    setTimeout(() => {
-                                        setCopyFreelancerPrompt(false)
-                                    }, 2000);
-                                }}
-                                className={`self-end flex items-center gap-2 py-2 px-4 rounded-md ${!copyFreelancerPrompt ?"bg-gray-700 border border-gray-600 text-white": "bg-green-500/15 border border-green-500/40 text-green-400"} text-sm font-semibold cursor-pointer`}>
-                                {!copyFreelancerPrompt ? <Copy size={16} /> : <Check size={16}/>} 
+                                <button
+                                    onClick={() => {
+                                        handleCopy(freelancerPrompt)
+                                        setCopyFreelancerPrompt(true)
+                                        setTimeout(() => {
+                                            setCopyFreelancerPrompt(false)
+                                        }, 2000);
+                                    }}
+                                    className={`self-end flex items-center gap-2 py-2 px-4 rounded-md ${!copyFreelancerPrompt ? "bg-gray-700 border border-gray-600 text-white" : "bg-green-500/15 border border-green-500/40 text-green-400"} text-sm font-semibold cursor-pointer`}>
+                                    {!copyFreelancerPrompt ? <Copy size={16} /> : <Check size={16} />}
                                     {!copyFreelancerPrompt ? "Copy" : "Copied"}
                                 </button>
                             </div>
@@ -167,16 +173,16 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                             <small className='text-[#9AA2BD]'>Handles common customer questions about products, shipping, and returns so you're not repeating yourself all day.</small>
                             <div className='flex flex-col gap-4 bg-[#0D1321] rounded-xl p-4'>
                                 <pre className='text-[#9AA2BD] text-sm font-mono whitespace-pre-wrap'>{`${storefrontPrompt}`}</pre>
-                                <button 
-                                onClick={() => {
-                                    handleCopy(storefrontPrompt)
-                                    setCopyStoreFrontPrompt(true)
-                                    setTimeout(() => {
-                                        setCopyStoreFrontPrompt(false)
-                                    }, 2000);
-                                }}
-                                className={`self-end flex items-center gap-2 py-2 px-4 rounded-md ${!copyStoreFrontPrompt ?"bg-gray-700 border border-gray-600 text-white": "bg-green-500/15 border border-green-500/40 text-green-400"} text-sm font-semibold cursor-pointer`}>
-                                    {!copyStoreFrontPrompt ? <Copy size={16} /> : <Check size={16}/>}
+                                <button
+                                    onClick={() => {
+                                        handleCopy(storefrontPrompt)
+                                        setCopyStoreFrontPrompt(true)
+                                        setTimeout(() => {
+                                            setCopyStoreFrontPrompt(false)
+                                        }, 2000);
+                                    }}
+                                    className={`self-end flex items-center gap-2 py-2 px-4 rounded-md ${!copyStoreFrontPrompt ? "bg-gray-700 border border-gray-600 text-white" : "bg-green-500/15 border border-green-500/40 text-green-400"} text-sm font-semibold cursor-pointer`}>
+                                    {!copyStoreFrontPrompt ? <Copy size={16} /> : <Check size={16} />}
                                     {!copyStoreFrontPrompt ? "Copy" : "Copied"}
                                 </button>
                             </div>
@@ -192,8 +198,12 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                 </div>
             </section>
             {/* FOOTER */}
-            <footer className='flex items-center justify-center py-4 bg-[#0D1321]/60 backdrop-blur-md border-t border-white/[0.07] w-full'>
-                <small className='text-[#9AA2BD]'>&copy; 2026 MimicAI. All rights reserved.</small>
+            <footer className="flex items-center justify-center gap-2 py-4 bg-[#0D1321]/60 backdrop-blur-md border-t border-white/[0.07] w-full">
+                <small className="text-[#9AA2BD]">© 2026 MimicAI. All rights reserved.</small>
+                <span className="text-[#4B5163]">·</span>
+                <a href="https://www.linkedin.com/in/muhammad-ghulam-ali-b25330216/" target="_blank" rel="noreferrer" className="text-[#9AA2BD] hover:text-[#A9B8FF] transition-colors">
+                    Built by Muhammad Ghulam Ali
+                </a>
             </footer>
         </main>
     )
