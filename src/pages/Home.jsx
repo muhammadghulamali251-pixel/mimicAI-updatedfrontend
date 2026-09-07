@@ -40,7 +40,7 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
     // SERVER WAKE UP
 
     useEffect(() => {
-        fetch('https://mimicai-backend.onrender.com/api/bot').catch(() => {})
+        fetch('https://mimicai-backend.onrender.com/api/bot').catch(() => { })
     }, [])
 
 
@@ -198,12 +198,14 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                 </div>
             </section>
             {/* FOOTER */}
-            <footer className="flex items-center justify-center gap-2 py-4 bg-[#0D1321]/60 backdrop-blur-md border-t border-white/[0.07] w-full">
+            <footer className="flex flex-col gap-1 items-center justify-center md:gap-2 py-2 md:py-4 bg-[#0D1321]/60 backdrop-blur-md border-t border-white/[0.07] w-full">
                 <small className="text-[#9AA2BD]">© 2026 MimicAI. All rights reserved.</small>
-                <span className="text-[#4B5163]">·</span>
-                <a href="https://www.linkedin.com/in/muhammad-ghulam-ali-b25330216/" target="_blank" rel="noreferrer" className="text-[#9AA2BD] hover:text-[#A9B8FF] transition-colors">
-                    Built by Muhammad Ghulam Ali
-                </a>
+                <div className='flex items-center justify-center gap-1'>
+                    <span className="text-[#4B5163] font-bold">·</span>
+                    <a href="https://www.linkedin.com/in/muhammad-ghulam-ali-b25330216/" target="_blank" rel="noreferrer" className="text-[#9AA2BD] hover:text-[#A9B8FF] transition-colors text-sm">
+                        Built by Muhammad Ghulam Ali
+                    </a>
+                </div>
             </footer>
         </main>
     )
