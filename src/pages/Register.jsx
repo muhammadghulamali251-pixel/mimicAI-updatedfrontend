@@ -154,6 +154,7 @@ const Register = () => {
                                     <input
                                         value={loginEmail}
                                         onChange={(e) => setLoginEmail(e.target.value)}
+                                        required
                                         className='border border-white/10 w-full py-2 px-4 rounded-md text-white placeholder:text-gray-600 placeholder:text-sm' type="text" placeholder='you@example.com' />
                                 </div>
                                 <div className="password flex flex-col gap-1">
@@ -161,6 +162,7 @@ const Register = () => {
                                     <input
                                         value={loginPassword}
                                         onChange={(e) => setLoginPassword(e.target.value)}
+                                        required
                                         className='border border-white/10 w-full py-2 px-4 rounded-md text-white placeholder:text-gray-600 placeholder:text-sm' type="password" placeholder='At least 6 characters' />
                                 </div>
                             </div>
@@ -202,6 +204,7 @@ const Register = () => {
                                     <input
                                         value={registerUserName}
                                         onChange={(e) => setRegisterUserName(e.target.value)}
+                                        required
                                         className='border border-white/10 w-full py-2 px-4 rounded-md text-white placeholder:text-gray-600 placeholder:text-sm' type="text" placeholder='Muhammad Ghulam Ali' />
                                 </div>
                                 <div className="email flex flex-col flex-full gap-1">
@@ -209,6 +212,7 @@ const Register = () => {
                                     <input
                                         value={registerEmail}
                                         onChange={(e) => setRegisterEmail(e.target.value)}
+                                        required
                                         className='border border-white/10 w-full py-2 px-4 rounded-md text-white placeholder:text-gray-600 placeholder:text-sm' type="text" placeholder='you@example.com' />
                                 </div>
                                 <div className="password flex flex-col gap-1">
@@ -216,6 +220,7 @@ const Register = () => {
                                     <input
                                         value={registerPassword}
                                         onChange={(e) => setRegisterPassword(e.target.value)}
+                                        required
                                         className='border border-white/10 w-full py-2 px-4 rounded-md text-white placeholder:text-gray-600 placeholder:text-sm' type="password" placeholder='At least 6 characters' />
                                 </div>
                             </div>
