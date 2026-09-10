@@ -9,6 +9,19 @@ import { logoutUser } from '../api/auth'
 
 const BotProfile = () => {
 
+    // PROMPT
+    const studentPrompt = `You are a career assistant representing [Your Name]. Answer recruiter questions about their background clearly and confidently.
+[Write your background here: degree, key skills, notable projects, work experience]
+Tone: confident, concise, no filler. Never invent details not listed above. If asked something outside this, say you don't have that detail and offer to connect them with [Your Name] directly.`
+
+    const freelancerPrompt = `You are the intake assistant for [Your Name / Business], a freelance [your service]. Greet visitors, explain your process, and answer common questions.
+[Write your details here: services offered, process/timeline, pricing range, availability]
+Tone: friendly and professional. Always end by asking for their email and a short project summary so [Your Name] can follow up.`
+
+    const businessPrompt = `You are the customer support assistant for [Business Name], a [what you sell/do].
+[Write your details here: products/services, shipping and returns policy, key info customers ask about]
+Tone: warm and on brand, never robotic. If asked about an existing order, ask for the order number and let them know a team member will follow up.`
+
     const navigate = useNavigate()
 
     const user = JSON.parse(localStorage.getItem("user"))
@@ -20,6 +33,7 @@ const BotProfile = () => {
     const [bot, setBot] = useState(null);
     const [botLoading, setBotLoading] = useState(true);
     const [botErrorMessage, setBotErrorMessage] = useState("");
+    const [selectedRole, setSelectedRole] = useState("")
     const [copyUserUri, setCopyUserUri] = useState(false)
 
     // CREATE BOT STATES
@@ -28,6 +42,18 @@ const BotProfile = () => {
     const [createBotSuccessMessage, setCreateBotSuccessMessage] = useState("");
     const [createBotErrorMessage, setCreateBotErrorMessage] = useState("");
     const [createBotLoader, setCreateBotLoader] = useState(false);
+
+
+    // PROMPT FUNCTION
+    useEffect(() => {
+            if (selectedRole === "student") {
+                setCreateSystemPrompt(studentPrompt)
+            } else if (selectedRole === "freelancer") {
+                setCreateSystemPrompt(freelancerPrompt)
+            } else if (selectedRole === "business") {
+                setCreateSystemPrompt(businessPrompt)
+            }    
+    },[selectedRole])
 
 
     // APIs
@@ -245,17 +271,17 @@ const BotProfile = () => {
 
                 {createBotForm && (
                     <>
-                        <div className='bg-white/6 border border-white/[0.07] backdrop-blur-md rounded-md px-3 py-6 md:py-8 md:px-7'>
+                        <div className='bg-white/6 border border-white/[0.07] backdrop-blur-md rounded-md px-3 py-5 md:py-6 md:px-7'>
 
-                            <div className="formHeader flex flex-col gap-1 mb-6">
-                                <p className='text-white font-bold text-2xl'>Create your bot</p>
+                            <div className="formHeader flex flex-col gap-0.5 mb-4">
+                                <p className='text-white font-bold text-xl'>Create your bot</p>
                                 <small className='text-[#8B93AB]'>Choose a name and describe how it should behave.</small>
                             </div>
 
-                            <form onSubmit={botSubmitHandler} className='flex flex-col gap-5'>
+                            <form onSubmit={botSubmitHandler} className='flex flex-col gap-3'>
 
                                 <div className="botName flex flex-col gap-1">
-                                    <label className='text-white font-semibold'>Bot name</label>
+                                    <label className='text-white font-semibold text-sm'>Bot name</label>
                                     <input
                                         value={createBotName}
                                         onChange={(e) => setCreateBotName(e.target.value)}
@@ -264,13 +290,25 @@ const BotProfile = () => {
                                         placeholder='Muhammad Ghulam Ali' required />
                                 </div>
 
+                                <div className='dropdown flex flex-col gap-1'>
+                                    <label className='text-white font-semibold text-sm'>Bot type</label>
+                                    <select
+                                        onChange={(e) => setSelectedRole(e.target.value)}
+                                        defaultValue="" className='py-2 px-2  rounded-md border border-white/10 text-white text-sm'>
+                                        <option disabled value="">Choose an option</option>
+                                        <option value="student">Student / Job Seeker</option>
+                                        <option value="freelancer">Freelancer</option>
+                                        <option value="business">Small Business / Creator</option>
+                                    </select>
+                                </div>
+
                                 <div className="systemPrompt flex flex-col gap-1">
-                                    <label className='text-white font-semibold'>System prompt</label>
+                                    <label className='text-white font-semibold text-sm'>System prompt</label>
                                     <textarea
                                         value={createSystemPrompt}
                                         onChange={(e) => setCreateSystemPrompt(e.target.value)}
-                                        className='border border-white/10 w-full py-3 px-4 rounded-md text-white placeholder:text-gray-600 resize-y'
-                                        rows={3}
+                                        className='border border-white/10 w-full py-3 px-4 rounded-md text-white placeholder:text-gray-600 text-sm resize-y'
+                                        rows={5}
                                         placeholder='You are a career assistant representing...' required>
                                     </textarea>
                                 </div>
@@ -279,7 +317,7 @@ const BotProfile = () => {
                                     <button
                                         disabled={createBotLoader}
                                         type='submit'
-                                        className='flex items-center justify-center py-3 w-35 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-md text-white font-semibold cursor-pointer hover:shadow-[0_6px_18px_rgba(67,97,238,0.35)] transition-shadow'>
+                                        className='text-sm flex items-center justify-center py-3 w-35 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-md text-white font-semibold cursor-pointer hover:shadow-[0_6px_18px_rgba(67,97,238,0.35)] transition-shadow'>
                                         {!createBotLoader ? "Create my bot" :
                                             <span className='block h-5 w-5 rounded-full border-2 border-gray-300 border-t-transparent animate-spin'></span>
                                         }
@@ -287,7 +325,7 @@ const BotProfile = () => {
                                     <button
                                         type='button'
                                         onClick={() => setCreateBotForm(false)}
-                                        className='py-3 px-6 border border-white/10 rounded-md text-[#9AA2BD] font-semibold cursor-pointer hover:bg-white/5 transition-colors'>
+                                        className='text-sm py-3 px-6 border border-white/10 rounded-md text-[#9AA2BD] font-semibold cursor-pointer hover:bg-white/5 transition-colors'>
                                         Cancel
                                     </button>
                                 </div>
