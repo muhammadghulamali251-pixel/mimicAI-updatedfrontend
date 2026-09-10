@@ -24,6 +24,28 @@ Tone: friendly and professional. Always end by asking for their email and a shor
 
 Tone: warm and on brand, never robotic. If asked about an existing order, ask for the order number and let them know a team member will follow up.`
 
+    // BOTS CREATED
+    const bots = [
+        {
+            category: "Student / Job Seeker",
+            title: "Career Assistant",
+            description: "Answers recruiter questions about background, skills, and projects.",
+            link: "https://mimic-ai-neon.vercel.app/chat/ali-cs-student-3a93d4"
+        },
+        {
+            category: "Freelancer",
+            title: "Client Intake Bot",
+            description: "Screens project inquiries and collects details before a call.",
+            link: "https://mimic-ai-neon.vercel.app/chat/freelancer-a1fd7f"
+        },
+        {
+            category: "Small Business",
+            title: "Storefront Assistant",
+            description: "Handles customer questions about products, shipping, and returns.",
+            link: "https://mimic-ai-neon.vercel.app/chat/business-83b28e"
+        }
+    ]
+
     // EXAMPLE SCROLL
     const examplesRef = useRef(null)
 
@@ -112,6 +134,39 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                         </div>
                     </div>
 
+                </div>
+
+                {/* BOTS CREATED WITH IT */}
+                <div className='w-full max-w-300 flex flex-col gap-10 py-5'>
+                    <div className='flex flex-col gap-3'>
+                        <small className='font-bold text-purple-500 text-center'>SEE IT IN ACTION</small>
+                        <h2 className='font-bold text-2xl md:text-4xl text-white text-center'>Bots people have built</h2>
+                        <small className='text-center text-[#9AA2BD]'>Real chatbots made with MimicAI. Open one and start chatting, no sign up needed.</small>
+                    </div>
+
+                    {/* cards */}
+                    <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+
+                        {bots.map(function (elem, index) {
+                            return (
+                                <div key={index} className='flex flex-col gap-4 bg-gray-800 border border-gray-600 py-7 px-5 rounded-2xl'>
+                                    <div className="profession bg-linear-to-br from-[#4361EE]/22 to-[#7209B7]/22 border border-white/10 text-[#A9B8FF] rounded-2xl px-4 py-1 w-fit">
+                                        <small className='font-bold'>{elem.category}</small>
+                                    </div>
+                                    <div className="duty">
+                                        <h2 className='text-white font-bold text-xl'>{elem.title}</h2>
+                                    </div>
+                                    <div className="detail">
+                                        <small className='text-[#9AA2BD]'>{elem.description}</small>
+                                    </div>
+                                    <div className="button">
+                                        <a href={`${elem.link}`} target='_blank' className='py-2 px-3 md:px-6 rounded-2xl bg-linear-to-br from-[#4361EE] to-[#7209B7] text-white cursor-pointer text-sm font-bold hover:opacity-90 hover:-translate-y-0.5 transition-all duration-150'>Try this bot</a>
+                                    </div>
+                                </div>
+                            )
+                        })}
+
+                    </div>
                 </div>
 
 
