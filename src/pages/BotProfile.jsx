@@ -294,11 +294,11 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
                                     <label className='text-white font-semibold text-sm'>Bot type</label>
                                     <select
                                         onChange={(e) => setSelectedRole(e.target.value)}
-                                        defaultValue="" className='py-2 px-2  rounded-md border border-white/10 text-white text-sm'>
-                                        <option disabled value="">Choose an option</option>
-                                        <option value="student">Student / Job Seeker</option>
-                                        <option value="freelancer">Freelancer</option>
-                                        <option value="business">Small Business / Creator</option>
+                                        defaultValue="" className='py-2 px-2  rounded-md border border-white/10 bg-[#0D1321] text-white text-sm'>
+                                        <option disabled value="" className='bg-[#0D1321] text-white text-sm'>Choose an option</option>
+                                        <option value="student" className='bg-[#0D1321] text-white text-sm'>Student / Job Seeker</option>
+                                        <option value="freelancer" className='bg-[#0D1321] text-white text-sm'>Freelancer</option>
+                                        <option value="business" className='bg-[#0D1321] text-white text-sm'>Small Business / Creator</option>
                                     </select>
                                 </div>
 
