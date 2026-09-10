@@ -158,7 +158,7 @@ Tone: warm and on brand, never robotic. If asked about an existing order, ask fo
             </header>
 
             {/* BODY */}
-            <section className='w-full h-full py-6 md:py-10 px-3 md:px-14'>
+            <section className='w-full h-full py-4 md:py-6 px-3 md:px-14'>
 
                 {/* PAGE HEADER */}
                 <div className="pageHeader flex items-center justify-between flex-wrap gap-4 mb-8">
