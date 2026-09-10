@@ -40,7 +40,7 @@ const Register = () => {
             setTimeout(() => {
                 setRegisterErrorMessage("")
             }, 3000);
-            return;
+            return result;
         }
         localStorage.setItem('token', result.token)
         setRegisterSuccessMessage(result.message)
@@ -48,6 +48,7 @@ const Register = () => {
             setRegisterSuccessMessage("")
         }, 3000);
         setRegisterLoader(false)
+        return result
     }
 
 
@@ -63,7 +64,7 @@ const Register = () => {
             setTimeout(() => {
                 setLoginErrorMessage("")
             }, 3000);
-            return;
+            return result;
         }
         localStorage.setItem('token', result.token)
         localStorage.setItem('user', JSON.stringify(result.user))
@@ -73,30 +74,31 @@ const Register = () => {
         }, 3000);
         setLoginLoader(false)
         navigate('/botprofile')
+        return result
     }
 
     //SUBMIT HANDLER
-    const loginHandler = (e) => {
+    const loginHandler = async (e) => {
         e.preventDefault()
         const loginUserData = {
             email: loginEmail,
             password: loginPassword
         }
-        sendLoginUser(loginUserData)
+        const result = await sendLoginUser(loginUserData)
         if (result.success) {
             setLoginEmail("")
             setLoginPassword("")
         }
     }
 
-    const registerHandler = (e) => {
+    const registerHandler = async (e) => {
         e.preventDefault()
         const registerUserData = {
             username: registerUserName,
             email: registerEmail,
             password: registerPassword
         }
-        sendRegisterUser(registerUserData)
+        const result = await sendRegisterUser(registerUserData)
         if (result.success) {
             setRegisterUserName("")
             setRegisterEmail("")
