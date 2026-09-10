@@ -61,7 +61,7 @@ const BotProfile = () => {
             setTimeout(() => {
                 setCreateBotErrorMessage("")
             }, 3000);
-            return;
+            return result;
         }
         setCreateBotSuccessMessage(result.message)
         setTimeout(() => {
@@ -70,23 +70,24 @@ const BotProfile = () => {
         setCreateBotLoader(false)
         setCreateBotForm(false)
         fetchMyBot()
+        return result
     }
 
 
-    const botSubmitHandler = (e) => {
+    const botSubmitHandler = async (e) => {
         e.preventDefault()
         const createBotData = {
             botName: createBotName,
             systemPrompt: createSystemPrompt
         }
-        sendCreateBot(createBotData)
-        if (result.succes) {
+        const result = await sendCreateBot(createBotData)
+        if (result.success) {
             setCreateBotName("")
             setCreateSystemPrompt("")
         }
     }
 
-    console.log(bot);
+
 
     // COPY FUNCTION
     const copyUri = () => {
