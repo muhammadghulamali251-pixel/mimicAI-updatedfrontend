@@ -18,12 +18,11 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path={`/chat/:slug`} element={<Chatbot />} />
         <Route path='/auth' element={<Register />} />
-        {/* <Route path='/botprofile' element={
+        <Route path='/botprofile' element={
           <ProtectedRoute>
             <BotProfile />
           </ProtectedRoute>
-        } /> */}
-        <Route path='/abc' element = {<BotProfile/>} />
+        } />
       </Routes>
     </>
   )
