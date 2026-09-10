@@ -80,8 +80,10 @@ const BotProfile = () => {
             systemPrompt: createSystemPrompt
         }
         sendCreateBot(createBotData)
-        setCreateBotName("")
-        setCreateSystemPrompt("")
+        if (result.succes) {
+            setCreateBotName("")
+            setCreateSystemPrompt("")
+        }
     }
 
     console.log(bot);
@@ -258,7 +260,7 @@ const BotProfile = () => {
                                         onChange={(e) => setCreateBotName(e.target.value)}
                                         className='border border-white/10 w-full py-3 px-4 rounded-md text-white placeholder:text-gray-600'
                                         type="text"
-                                        placeholder='Muhammad Ghulam Ali' />
+                                        placeholder='Muhammad Ghulam Ali' required />
                                 </div>
 
                                 <div className="systemPrompt flex flex-col gap-1">
@@ -268,7 +270,7 @@ const BotProfile = () => {
                                         onChange={(e) => setCreateSystemPrompt(e.target.value)}
                                         className='border border-white/10 w-full py-3 px-4 rounded-md text-white placeholder:text-gray-600 resize-y'
                                         rows={3}
-                                        placeholder='You are a career assistant representing...'>
+                                        placeholder='You are a career assistant representing...' required>
                                     </textarea>
                                 </div>
 

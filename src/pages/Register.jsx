@@ -83,8 +83,10 @@ const Register = () => {
             password: loginPassword
         }
         sendLoginUser(loginUserData)
-        setLoginEmail("")
-        setLoginPassword("")
+        if (result.success) {
+            setLoginEmail("")
+            setLoginPassword("")
+        }
     }
 
     const registerHandler = (e) => {
@@ -95,9 +97,11 @@ const Register = () => {
             password: registerPassword
         }
         sendRegisterUser(registerUserData)
-        setRegisterUserName("")
-        setRegisterEmail("")
-        setRegisterPassword("")
+        if (result.success) {
+            setRegisterUserName("")
+            setRegisterEmail("")
+            setRegisterPassword("")
+        }
     }
 
 
@@ -168,11 +172,11 @@ const Register = () => {
                             </div>
 
                             <div className="button">
-                                <button 
-                                disabled = {loginLoader}
-                                className='flex items-center justify-center w-full py-2 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-md text-white font-semibold cursor-pointer hover:shadow-[0_6px_18px_rgba(67,97,238,0.35)] transition-shadow text-sm' type='submit'>{!loginLoader ? "Log in" :
-                                <span className='block h-5 w-5 rounded-full border-2 border-gray-300 border-t-transparent animate-spin'></span>
-                            }</button>
+                                <button
+                                    disabled={loginLoader}
+                                    className='flex items-center justify-center w-full py-2 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-md text-white font-semibold cursor-pointer hover:shadow-[0_6px_18px_rgba(67,97,238,0.35)] transition-shadow text-sm' type='submit'>{!loginLoader ? "Log in" :
+                                        <span className='block h-5 w-5 rounded-full border-2 border-gray-300 border-t-transparent animate-spin'></span>
+                                    }</button>
                             </div>
                         </>
                     )}
@@ -227,7 +231,7 @@ const Register = () => {
 
                             <div className="button">
                                 <button
-                                disabled = {registerLoader}
+                                    disabled={registerLoader}
                                     className='flex items-center justify-center w-full py-2 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-md text-white font-semibold cursor-pointer hover:shadow-[0_6px_18px_rgba(67,97,238,0.35)] transition-shadow text-sm' type='submit'>{!registerLoader ? "Create account" :
                                         <span className='block h-5 w-5 rounded-full border-2 border-gray-300 border-t-transparent animate-spin'></span>
                                     }</button>
