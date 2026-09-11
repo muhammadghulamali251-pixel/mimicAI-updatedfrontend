@@ -108,10 +108,10 @@ const Register = () => {
 
 
     return (
-        <div className='flex items-center justify-center min-w-screen min-h-screen h-full w-full bg-[#0D1321] bg-[radial-gradient(900px_560px_at_12%_0%,rgba(67,97,238,0.30),transparent_60%),radial-gradient(800px_640px_at_90%_18%,rgba(114,9,183,0.26),transparent_55%)]'>
+        <div className='flex items-center justify-center  h-dvh w-full bg-[#0D1321] bg-[radial-gradient(900px_560px_at_12%_0%,rgba(67,97,238,0.30),transparent_60%),radial-gradient(800px_640px_at_90%_18%,rgba(114,9,183,0.26),transparent_55%)]'>
 
             {/* LOGIN REGISER CENTER */}
-            <div className='w-full max-w-120 flex flex-col items-center px-2 gap-8'>
+            <div className='w-full max-w-120 flex flex-col items-center px-5 gap-8'>
 
                 <div className="logo self.center flex items-center gap-2">
                     <span className='flex items-center justify-center h-10 w-10 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-2xl'>
