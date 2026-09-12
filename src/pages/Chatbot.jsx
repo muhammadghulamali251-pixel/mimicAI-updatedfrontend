@@ -136,7 +136,7 @@ const Chatbot = () => {
                                                         <span className='flex items-center justify-center h-8 w-8 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-full'>
                                                             <Bot className='text-white' size={16} />
                                                         </span>
-                                                        <div className='self-start py-4 px-3  max-w-[80%] bg-transparent  border border-white/[0.07] text-white text-sm rounded-md shrink-0'>
+                                                        <div className='self-start py-4 px-3  max-w-[80%] bg-transparent  border border-white/[0.07] text-white text-sm rounded-md shrink-0 break-words'>
                                                             <ReactMarkdown>{elem.ai}</ReactMarkdown>
                                                         </div>
                                                     </>
