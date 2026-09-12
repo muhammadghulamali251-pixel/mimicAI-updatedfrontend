@@ -126,7 +126,7 @@ const Chatbot = () => {
                                                     <p className='text-[#8B93AB] text-xs mt-1'>This is taking a bit longer, the response might just be lengthy...</p>
                                                 )}
                                             </div> :
-                                            <div className='flex gap-2'>
+                                            <div className='flex gap-2 w-full min-w-0'>
                                                 {elem.error ? (
                                                     <div className='px-4 py-5 w-full bg-[#F25C5C]/10 border border-[#F25C5C]/35 rounded-md'>
                                                         <p className='text-[#f0cccc] text-sm'>{elem.error}</p>
@@ -136,7 +136,7 @@ const Chatbot = () => {
                                                         <span className='flex items-center justify-center h-8 w-8 bg-linear-to-br from-[#4361EE] to-[#7209B7] rounded-full'>
                                                             <Bot className='text-white' size={16} />
                                                         </span>
-                                                        <div className='self-start py-4 px-3  max-w-[80%] bg-transparent  border border-white/[0.07] text-white text-sm rounded-md break-words overflow-x-auto'>
+                                                        <div className='self-start py-4 px-3 min-w-0  max-w-[80%] bg-transparent  border border-white/[0.07] text-white text-sm rounded-md break-words overflow-x-auto'>
                                                             <ReactMarkdown>{elem.ai}</ReactMarkdown>
                                                         </div>
                                                     </>
